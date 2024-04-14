@@ -1,0 +1,60 @@
+.table-management-interface {
+  padding: $padding-medium;
+  border-radius: 5px;
+  min-height: calc(100vh - 52px);
+  h1 {
+    font-size: $heading-1;
+    margin-bottom: $margin-medium;
+  }
+
+  .table-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: $margin-medium;
+  }
+
+  .table-card {
+    background-color: white;
+    border-radius: 5px;
+    padding: $padding-medium;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    p {
+      margin: 0;
+    }
+
+    .table-status {
+      margin-top: $margin-small;
+
+      &.occupied {
+        color: red;
+      }
+
+      &.available {
+        color: green;
+      }
+    }
+
+    .table-actions {
+      margin-top: $margin-small;
+    }
+  }
+
+  .add-table-form,
+  .assign-table-form {
+    margin-top: $margin-medium;
+
+    input[type="text"] {
+      padding: $padding-small;
+      border: 1px solid $border-color;
+      border-radius: 5px;
+      margin-right: $margin-small;
+    }
+
+    select {
+      padding: $padding-small;
+      border: 1px solid $border-color;
+      border-radius: 5px;
+    }
+  }
+}

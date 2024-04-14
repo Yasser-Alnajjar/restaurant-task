@@ -1,0 +1,116 @@
+.sidebar {
+  padding: 25px 20px;
+  display: flex;
+  width: 240px;
+  position: relative;
+
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+  .overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    width: calc(100% - 240px);
+    height: 100%;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+    transition: 0.1s ease-in-out;
+  }
+
+  flex-direction: column;
+  gap: 1rem;
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5rem;
+    gap: 2rem;
+    &-item {
+      & button {
+        color: $white;
+        font-size: 1.25rem;
+        cursor: pointer;
+      }
+      transition: 0.3s ease-in-out;
+      &.show .sidebar-dropdown-menu {
+        max-height: 100vh;
+        padding: 0.8rem;
+        height: auto;
+      }
+    }
+  }
+  &-dropdown-menu {
+    background-color: $white;
+    margin-top: 0.5rem;
+    color: $black;
+    border-radius: 0.625rem;
+    min-height: 0px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+    padding: 0 0.8rem;
+    font-size: 1rem;
+    &-item {
+      font-size: 0.9rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      .sidebar-dropdown-menu-link.active {
+        color: $primary;
+      }
+      .sidebar-dropdown-menu-link {
+        display: block;
+      }
+    }
+  }
+
+  .dashboard {
+    text-align: center;
+    border-radius: 46px;
+  }
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    padding: 0;
+    .overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+    position: fixed;
+    background-color: $jelly;
+    padding: 25px 20px;
+    top: 0;
+    z-index: 20;
+    height: 100%;
+
+    &.collapse {
+      transform: translateX(-100%);
+      .overlay {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    &.overback {
+      z-index: -3;
+    }
+  }
+  body[dir='rtl'] {
+    .sidebar {
+      &.collapse {
+        transform: translateX(100%);
+      }
+      .overlay {
+        right: auto;
+        left: 0;
+      }
+    }
+  }
+}

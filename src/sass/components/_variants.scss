@@ -1,0 +1,76 @@
+$variants: (
+  "primary": $primary $white,
+  "secondary": $secondary $black,
+  "jelly": $jelly $white,
+  "white": $white $black,
+  "black": $black $white,
+  "gray": $gray $white,
+  "danger": $danger $white,
+  "background": $background $white,
+  "link": $white $black,
+  "russian": $russian $russian,
+  "success": $success $black,
+  "yellow": $yellow $black,
+  green: $green $white,
+);
+
+@each $variant, $args in $variants {
+  $background: nth($args, 1);
+  $color: nth($args, 2);
+  .bg-#{$variant} {
+    background-color: $background;
+    &:hover {
+      background-color: darken($background, 20);
+    }
+  }
+  .text-#{$variant} {
+    color: $background;
+  }
+  .#{$variant} {
+    color: $color;
+    background-color: $background;
+  }
+  .btn.#{$variant} {
+    color: $color;
+    background-color: $background;
+    &:hover {
+      background-color: darken($background, 20);
+    }
+  }
+  .btn.border-#{$variant} {
+    border: 1px solid darken($background, 20);
+  }
+  .border-#{$variant} {
+    border-color: $background;
+  }
+  .active-#{$variant} {
+    color: darken($background, 20);
+  }
+  .bg-hover-#{$variant}:hover {
+    background-color: darken($background, 20) !important;
+  }
+  .text-hover-#{$variant}:hover {
+    color: darken($background, 20) !important;
+  }
+  .text-#{$variant} {
+    color: $background !important;
+  }
+  .bg-#{$variant} {
+    background-color: $background !important;
+  }
+  .modal.#{$variant} {
+    .modal-header,
+    .modal-content {
+      color: $color;
+      background-color: $background;
+    }
+  }
+  .control {
+    &.border-#{$variant} {
+      border-color: darken($background, 20);
+    }
+    &.#{$variant}:hover {
+      border-color: darken($background, 20);
+    }
+  }
+}

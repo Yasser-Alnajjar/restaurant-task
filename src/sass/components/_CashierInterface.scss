@@ -1,0 +1,53 @@
+.cashier-interface {
+  background-color: $background-color;
+  color: $text-color;
+  padding: $padding-medium;
+  border-radius: 5px;
+
+  h1 {
+    font-size: $heading-1;
+    margin-bottom: $margin-medium;
+  }
+
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    h2 {
+      font-size: $heading-2;
+      margin-bottom: $margin-small;
+    }
+
+    .menu-item {
+      background-color: $primary;
+      border-radius: 5px;
+      padding: $padding-medium;
+      cursor: pointer;
+
+      p {
+        margin: 0;
+      }
+
+      &:hover {
+        background-color: $primary-color;
+        color: white;
+
+        button {
+          background-color: white;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .receipt {
+    h2 {
+      font-size: $heading-2;
+      margin-bottom: $margin-small;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}

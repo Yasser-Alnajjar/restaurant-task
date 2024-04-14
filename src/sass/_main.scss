@@ -1,0 +1,33 @@
+@import "./base/variables";
+@import "./base/base";
+@import "./base/containers";
+@import "./base/grid-system";
+
+// mixins
+@import "./mixins/mixins";
+
+// components
+@import "./components/button";
+@import "./components/modal";
+@import "./components/input";
+@import "./components/pagination";
+@import "./components/card";
+@import "./components/navbar";
+@import "./components/sidebar";
+@import "./components/footer";
+@import "./components/badge";
+@import "./components/tabletitle";
+@import "./components/CashierInterface";
+@import "./components/TableManagementInterface";
+@import "./components/order";
+@import "./components/cart";
+@import "./components/discount-form";
+
+// Pages
+@import "./pages/dashboard";
+@import "./pages/patients";
+@import "./pages/add-patient";
+
+@import "./base/helpers";
+@import "./components/variants";
+@import "./base/classes";

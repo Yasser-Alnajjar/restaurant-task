@@ -1,0 +1,25 @@
+.order {
+  h2 {
+    font-size: $heading-2;
+    margin-bottom: $margin-small;
+  }
+  .content {
+    background-color: $white;
+    border-radius: 5px;
+    .quant {
+      min-width: 120px;
+    }
+    .order-item {
+      padding: $padding-medium;
+      margin-bottom: $margin-small;
+      border-bottom: 1px solid #dee2e7;
+      p {
+        margin: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

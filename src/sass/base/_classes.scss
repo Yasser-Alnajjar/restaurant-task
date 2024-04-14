@@ -1,0 +1,80 @@
+.flex {
+  display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-column-reverse {
+  flex-direction: column-reverse;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.cursor-default {
+  cursor: default;
+}
+.not-allowed {
+  cursor: not-allowed;
+}
+.no-drop {
+  cursor: no-drop;
+}
+.pointer {
+  cursor: pointer;
+}
+
+.w-full {
+  width: 100%;
+}
+.block {
+  display: block;
+}
+.d-none {
+  display: none;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+.img-fluid {
+  max-width: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.over-hide {
+  overflow: hidden;
+}
+.over-auto {
+  overflow: hidden;
+}
+.transparent {
+  background-color: transparent;
+  border-color: transparent;
+  outline: transparent;
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+.w-100 {
+  width: 100%;
+}
+.under-line {
+  text-decoration: underline;
+}

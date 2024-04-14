@@ -1,0 +1,113 @@
+// Colors
+$primary: #099eae;
+$jelly: #457b9d;
+$secondary: #eef6f8;
+$black-half: #00000080;
+$white: #fff;
+$gray: #d9d9d9;
+$danger: #d62828;
+$background: #447a9ccc;
+$black: #1c1c1c;
+$russian: rgba(0, 0, 0, 0.1);
+
+// src/styles/_variables.scss
+
+// Colors
+$primary-color: #3498db;
+$primary-color-light: #5ab9ea;
+$green: #1c964f;
+$text-color: #333;
+$background-color: #f5f5f5;
+$border-color: #ccc;
+
+// Font Sizes
+$base-font-size: 16px;
+$heading-1: 24px;
+$heading-2: 20px;
+$heading-3: 18px;
+$heading-4: 16px;
+
+// Spacing
+$padding-small: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+$margin-small: 10px;
+$margin-medium: 20px;
+$margin-large: 30px;
+
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+$success: #416d19;
+$yellow: #ffff00;
+// Units
+$unit: 4px;
+$spaces: 0 1 2 3 4 5 6 7 8 9 10 11 12 14 16 20 24 28 32 36 40 44 48 52 56 60 64
+  72 80 96;
+$gap: 0.5rem;
+$fontSize: (xs 0.75rem, sm 0.875rem, base 1rem, lg 1.125rem, xl 1.25rem);
+
+// transtions
+$delay: 0.3s;
+
+// Brack Points
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+// Flex
+$orders: 0 1 2 3 4 5 6 7 8 9 10;
+$flexProps: (
+  center: (
+    center,
+  ),
+  start: (
+    start,
+  ),
+  end: (
+    end,
+  ),
+  stretch: (
+    stretch,
+  ),
+  around: (
+    space-around,
+  ),
+  between: (
+    space-between,
+  ),
+  evenly: (
+    space-evenly,
+  ),
+);
+
+// deleteQuery
+$rounded: (
+  none: 0,
+  full: 999999px,
+  md: 6px,
+  sm: 2px,
+  lg: 8px,
+  xl: 12px,
+  2xl: 16px,
+  3xl: 24px,
+);
+
+// Screens
+$screens: (
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px,
+);

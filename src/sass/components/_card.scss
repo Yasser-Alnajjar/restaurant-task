@@ -1,0 +1,17 @@
+.card {
+  padding: 1rem;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #dee2e7;
+  &-title {
+    color: #505050;
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+  }
+  &-img {
+    img {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+}

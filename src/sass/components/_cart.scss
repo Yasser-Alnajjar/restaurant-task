@@ -1,0 +1,10 @@
+.cart-btn {
+  position: relative;
+  color: $black;
+  .badge {
+    position: absolute;
+    left: 60%;
+    top: -15px;
+    transform: translateX(-50%);
+  }
+}

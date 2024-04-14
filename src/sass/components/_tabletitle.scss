@@ -1,0 +1,22 @@
+.table-title {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $russian;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+  &-link {
+    color: $primary;
+    font-family: Poppins;
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+  &-name {
+    color: $black;
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
