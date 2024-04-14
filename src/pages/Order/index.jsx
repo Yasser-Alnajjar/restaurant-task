@@ -12,11 +12,15 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Order() {
-  const order = useSelector((state) => state.cashier.order);
-
+  const { order, discountApplied } = useSelector((state) => state.cashier);
   const dispatch = useDispatch();
   const handleModifyQuantity = (menuItem, quantity) => {
     dispatch(modifyOrderQuantity({ menuItem, quantity }));
+    dispatch(calculateTotal());
+
+    if (discountApplied) {
+      dispatch(handleApplyDiscount("YASSER10"));
+    }
   };
   const handleApplyDiscount = (discount) => {
     dispatch(applyDiscount(discount));
@@ -56,7 +60,6 @@ function Order() {
                             <Button
                               onClick={() => {
                                 handleModifyQuantity(item, item.quantity + 1);
-                                dispatch(calculateTotal());
                               }}
                             >
                               +
@@ -64,7 +67,6 @@ function Order() {
                             <Button
                               onClick={() => {
                                 handleModifyQuantity(item, item.quantity - 1);
-                                dispatch(calculateTotal());
                               }}
                             >
                               -

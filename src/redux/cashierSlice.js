@@ -39,21 +39,31 @@ const cashierSlice = createSlice({
       if (discountCode === DISCOUNT_CODE) {
         if (!state.discountApplied) {
           state.discountApplied = true;
-          state.discountAmount = (state.total * DISCOUNT_PERCENTAGE) / 100;
-          state.total -= Math.floor(state.discountAmount);
+          state.discountAmount = (state.subtotal * DISCOUNT_PERCENTAGE) / 100;
+          state.total = state.subtotal - Math.floor(state.discountAmount);
+        } else {
+          state.discountAmount = (state.subtotal * DISCOUNT_PERCENTAGE) / 100;
+          state.total = state.subtotal - Math.floor(state.discountAmount);
         }
       }
     },
     calculateTotal(state) {
-      if (state.discountApplied) {
-        state.discountAmount = (state.total * DISCOUNT_PERCENTAGE) / 100;
-        state.total -= Math.floor(state.discountAmount);
-      }
-      state.total = state.order.reduce((acc, item) => {
+      state.subtotal = state.order.reduce((acc, item) => {
         return acc + item.price * item.quantity;
       }, 0);
-      state.subtotal = state.total;
-      state.total -= Math.floor(state.discountAmount);
+      if (state.discountApplied) {
+        state.discountAmount = Math.floor(
+          (state.total * DISCOUNT_PERCENTAGE) / 100
+        );
+        state.total = state.order.reduce((acc, item) => {
+          const accu = acc + item.price * item.quantity;
+          return accu - state.discountAmount;
+        }, 0);
+      } else {
+        state.total = state.order.reduce((acc, item) => {
+          return acc + item.price * item.quantity;
+        }, 0);
+      }
     },
   },
 });
