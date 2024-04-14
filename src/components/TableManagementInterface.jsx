@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
 import {
   addTable,
   assignTable,
@@ -12,9 +13,9 @@ function TableManagementInterface() {
   const tables = useSelector((state) => state.table.tables);
   const [tableNumber, setTableNumber] = useState("");
   const [customerName, setCustomerName] = useState("");
-  const [error, setError] = useState(false);
+  const [assignValue, setAssignValue] = useState("");
+  const [assignTables, setAssignTables] = useState([]);
 
-  console.log(tables);
   const handleAddTable = () => {
     if (tableNumber.trim() !== "") {
       dispatch(addTable(tableNumber));
@@ -23,23 +24,51 @@ function TableManagementInterface() {
   };
 
   const handleAssignTable = (tableNumber) => {
-    const customer = { name: customerName };
+    let hours = new Date().getHours();
+    hours = hours % 12;
+    hours = hours ? hours : 12;
 
+    if (tableNumber === "") {
+      toast.error("Please Select A Table");
+      return;
+    }
+    const customer = {
+      name: customerName,
+      date: `${hours} : ${new Date().getMinutes()} ${
+        new Date().getHours() >= 12 ? "PM" : "AM"
+      }`,
+    };
+    const currentTable = tables.find((item) => item.number === tableNumber);
+    const isTableOccupied = assignTables.find(
+      (item) => item.number === currentTable.number
+    );
+
+    if (tableNumber !== "" && isTableOccupied === undefined) {
+      setAssignTables((prev) => [...prev, currentTable]);
+    } else {
+      toast.error("This Table not available !");
+      return;
+    }
     if (customerName !== "") {
-      dispatch(assignTable({ tableNumber, customer }));
+      dispatch(
+        assignTable({
+          tableNumber,
+          customer,
+        })
+      );
       setCustomerName("");
     } else {
-      setError(true);
-    }
-    if (tableNumber === "Select a table") {
-      setError(false);
+      toast.error("Please Enter Customer Name !");
     }
   };
-
-  const handleMarkAsAvailable = (tableNumber) => {
-    dispatch(markTableAsAvailable(tableNumber));
+  const handleMarkAsAvailable = (table) => {
+    const currentIndex = tables.findIndex(
+      (item) => +item.number === +table.number
+    );
+    dispatch(markTableAsAvailable(table.number));
+    assignTables.splice(currentIndex, 1);
   };
-
+  console.log("assignTables", assignTables);
   return (
     <div className="table-management-interface">
       <h1>Table Management Interface</h1>
@@ -54,21 +83,22 @@ function TableManagementInterface() {
         />
         <Button onClick={handleAddTable}>Add Table</Button>
       </form>
-      <div className="assign-table-form">
+      <form
+        className="assign-table-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleAssignTable(assignValue);
+        }}
+      >
         <input
           type="text"
           value={customerName}
           onChange={(e) => {
             setCustomerName(e.target.value);
-            if (e.target.value !== "") {
-              setError(false);
-            } else {
-              setError(true);
-            }
           }}
           placeholder="Enter customer name"
         />
-        <select onChange={(e) => handleAssignTable(e.target.value)}>
+        <select onChange={(e) => setAssignValue(e.target.value)}>
           <option value="Select a table">Select a table</option>
           {tables.map((table) => (
             <option key={table.number} value={table.number}>
@@ -76,21 +106,26 @@ function TableManagementInterface() {
             </option>
           ))}
         </select>
-        {error && <p className="danger">Please Enter Customer Name !</p>}
-      </div>
+        <Button type="submit" className="m-4">
+          Assign
+        </Button>
+      </form>
       <div className="table-list mt-5">
         {tables.map((table) => (
           <div key={table.number} className="table-card">
             <p>Table {table.number}</p>
             <p className={`table-status ${table.status}`}>{table.status}</p>
             {table.status === "occupied" && (
-              <p>Customer: {table.customer.name}</p>
+              <>
+                <p>Customer: {table.customer.name}</p>
+                <p>Date: {table.customer.date}</p>
+              </>
             )}
             {table.status === "occupied" && (
               <div className="table-actions">
                 <Button
                   variant="danger"
-                  onClick={() => handleMarkAsAvailable(table.number)}
+                  onClick={() => handleMarkAsAvailable(table)}
                 >
                   Mark as Available
                 </Button>
