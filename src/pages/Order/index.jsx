@@ -32,7 +32,7 @@ function Order() {
         <h2 className="mb-4">Order ({order.length})</h2>
         {order.length !== 0 ? (
           <div className="row">
-            <div className="col-9">
+            <div className="col-12 col-md-9">
               <div className="order">
                 <div className="content">
                   {order.map((item) => (
@@ -52,7 +52,7 @@ function Order() {
                             {item.symbol} {item.price}
                           </p>
                           <p className="quant">Quantity: {item.quantity}</p>
-                          <div className="flex gap-2">
+                          <div className="btn-group gap-2">
                             <Button
                               onClick={() => {
                                 handleModifyQuantity(item, item.quantity + 1);
@@ -77,7 +77,7 @@ function Order() {
                 </div>
               </div>
             </div>
-            <div className="col-3">
+            <div className="col-12 col-md-3">
               <div className="card">
                 <h2 className="card-title">Have a coupon?</h2>
                 <DiscountForm applyDiscount={handleApplyDiscount} />

@@ -13,13 +13,11 @@ function CashierInterface() {
   return (
     <div className="cashier-interface">
       <h2>Menu</h2>
-      <div className="menu">
+      <div className="row">
         {menuItems.map((item) => (
-          <MenuItem
-            key={item?.id}
-            menuItem={item}
-            addToOrder={handleAddToOrder}
-          />
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={item?.id}>
+            <MenuItem menuItem={item} addToOrder={handleAddToOrder} />
+          </div>
         ))}
       </div>
     </div>
